@@ -11,7 +11,7 @@ def draw_koch_edge(t, length, depth):
     # Drawing first segment
     draw_koch_edge(t, segment, depth - 1)
 
-    # Turn inward (left 60°) to create indentation
+    # Turn inward (right 60°) to create indentation
     t.right(60)
     draw_koch_edge(t, segment, depth - 1)
 
@@ -70,3 +70,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
