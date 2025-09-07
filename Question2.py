@@ -13,7 +13,7 @@ import csv
 import os
 
 #Prompt for folder path
-default_folder = 'C:/Users/olive/OneDrive/Desktop/temperatures/'
+default_folder = "./temperatures/"
 folder = input(f"Enter the path to your temperatures folder [{default_folder}]: ") or default_folder
 
 #Get all CSV files in the folder
@@ -180,4 +180,5 @@ with open("temperature_stability_stations.txt", "w") as out:
         out.write(f"Most Stable: {name}: StdDev {min_std:.1f}°C\n")
     for name in most_variable:
         out.write(f"Most Variable: {name}: StdDev {max_std:.1f}°C\n")
+
         
