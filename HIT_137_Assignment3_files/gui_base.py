@@ -9,7 +9,7 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
     def __init__(self):  # Constructor method to initialize the GUI
         super().__init__()  # Calls parent constructors (Tk and ModelRunner)
         self.title("HIT137 AI Model Display")  # Sets the window title
-        self.geometry("800x600")  # Defines the window size in pixels
+        self.geometry("800x700")  # Defines the window size in pixels
         self.configure(bg="#f0f0f0")  # Sets a light gray background color
 
         self.input_type = tk.StringVar(value="Text")  # Tracks whether user selects Text or Image input
@@ -29,7 +29,7 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
         self.create_oop_explanation()  # Adds static explanation of OOP concepts
 
     def create_model_selection(self):  # Creates dropdown for selecting AI model
-        ttk.Label(self, text="AI Model Selection").pack()  # Adds label above dropdown
+        ttk.Label(self, text="AI Model Selection", font=("Arial",15)).pack(pady=20)  # Adds label above dropdown
         self.model_dropdown = ttk.Combobox(self, values=["Image-to-Text", "Text-to-Speech"])  # Dropdown with model options
         self.model_dropdown.set("Image-to-Text")  # Sets default selection to image captioning
         self.model_dropdown.pack()  # Adds dropdown to the GUI layout
@@ -37,7 +37,7 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
     def create_input_section(self):  # Creates section for selecting input type
         frame = tk.Frame(self)  # Creates a container frame for layout
         frame.pack(pady=10)  # Adds vertical spacing below the frame
-        ttk.Label(frame, text="User Input Section").grid(row=0, column=0)  # Adds label inside the frame
+        ttk.Label(frame, text="User Input Section", font=("Arial",10)).grid(row=0, column=0)  # Adds label inside the frame
         ttk.Radiobutton(frame, text="Text", variable=self.input_type, value="Text").grid(row=1, column=0)  # Radio button for text input
         ttk.Radiobutton(frame, text="Image", variable=self.input_type, value="Image").grid(row=1, column=1)  # Radio button for image input
         ttk.Button(frame, text="Browse", command=self.browse_file).grid(row=1, column=2)  # Button to open file dialog
@@ -50,11 +50,11 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
         ttk.Button(frame, text="Clear", command=self.clear_output).grid(row=0, column=2)  # Button to clear output and reset
 
     def create_output_section(self):  # Creates separate input/output boxes for TTS and captioning
-        ttk.Label(self, text="Text Input (for TTS)").pack()  # Label for TTS input box
+        ttk.Label(self, text="Text Input (for TTS)", font=("Arial",10)).pack(pady=10)  # Label for TTS input box
         self.text_input_box = tk.Text(self, height=5, width=80)  # Editable text box for user input
         self.text_input_box.pack()  # Adds text input box to GUI
 
-        ttk.Label(self, text="Image Caption Output").pack()  # Label for caption output box
+        ttk.Label(self, text="Image Caption Output", font=("Arial",10)).pack(pady=10)  # Label for caption output box
         self.caption_output_box = tk.Text(self, height=5, width=80, state="disabled")  # Read-only box for displaying captions
         self.caption_output_box.pack()  # Adds caption output box to GUI
 
@@ -70,12 +70,12 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
             self.caption_output_box.config(state="normal")  # Enable caption output box
 
     def create_model_info(self):  # Adds section to display model metadata
-        ttk.Label(self, text="Model Information & Explanation").pack()  # Label for model info section
+        ttk.Label(self, text="Model Information & Explanation", font=("Arial",10)).pack(pady=10)  # Label for model info section
         self.model_info = tk.Label(self, text="", justify="left", bg="#f0f0f0")  # Label to show model name, category, and description
         self.model_info.pack()  # Adds model info label to GUI
 
     def create_oop_explanation(self):  # Adds static explanation of OOP concepts
-        ttk.Label(self, text="OOP Concept Explanations:").pack()  # Label for OOP section
+        ttk.Label(self, text="OOP Concept Explanations:", font=("Arial",10)).pack(pady=10)  # Label for OOP section
         explanation = get_oop_explanation()  # Retrieves formatted explanation string
         tk.Label(self, text=explanation, justify="left", bg="#f0f0f0").pack()  # Displays explanation in a label
 
@@ -113,4 +113,5 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
     def clear_output(self):  # Clears all user input and output
         self.text_input_box.delete("1.0", tk.END)  # Clears text input box
         self.caption_output_box.config(state="normal")  # Enables caption box for clearing
+
 
