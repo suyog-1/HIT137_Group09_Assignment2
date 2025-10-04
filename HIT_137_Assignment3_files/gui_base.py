@@ -71,7 +71,7 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
 
     def create_model_info(self):  # Adds section to display model metadata
         ttk.Label(self, text="Model Information & Explanation", font=("Arial",10)).pack(pady=10)  # Label for model info section
-        self.model_info = tk.Label(self, text="", justify="left", bg="#f0f0f0")  # Label to show model name, category, and description
+        self.model_info = tk.Label(self, text="Run a Model to see it's information", justify="left", bg="#f0f0f0")  # Label to show model name, category, and description
         self.model_info.pack()  # Adds model info label to GUI
 
     def create_oop_explanation(self):  # Adds static explanation of OOP concepts
@@ -113,5 +113,6 @@ class AIModelGUI(tk.Tk, ModelRunner):  # Inherits from Tkinter's main window and
     def clear_output(self):  # Clears all user input and output
         self.text_input_box.delete("1.0", tk.END)  # Clears text input box
         self.caption_output_box.config(state="normal")  # Enables caption box for clearing
+
 
 
